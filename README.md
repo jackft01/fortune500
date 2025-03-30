@@ -49,3 +49,32 @@ Some Descriptions of the data included:
     *   **Changes in Risk Factors:** New or significantly modified risks mentioned in 10-Ks or 10-Qs.
 4.  **Combine Quantitative & Qualitative:** Correlate the hard numbers (from Financial Statements) with the soft information (sentiment, risk changes, MD&A themes extracted via NLP). Does strong revenue growth align with positive sentiment? Does mention of a new risk precede market underperformance?
 5.  **Context is Key:** Interpret findings within the context of the broader market, industry trends, and analyst expectations (if you incorporate that data later). A company might report decent growth, but if it's below expectations or peers are doing much better, the market reaction could still be negative.
+
+
+**1. `market_data_close.csv`**
+
+*   **What it is:** This file contains the **daily closing price** for each ticker.
+*   **Interpretation:** This adjusted closing price represents the theoretically comparable value of the stock over time. If you bought a share years ago, this adjusted price accounts for how many shares you'd have now after splits and the value of dividends received (reinvested conceptually). It's the standard price used for calculating historical performance and returns accurately.
+*   **Structure:**
+    *   Rows: Indexed by Date (e.g., `2023-10-26`, `2023-10-27`, ...).
+    *   Columns: Tickers (`AAPL`, `MSFT`, `AMZN`, `^GSPC`).
+    *   Values: The adjusted closing price for that stock on that day (e.g., 170.50).
+
+**2. `market_data_volume.csv`**
+
+*   **What it is:** This file contains the **daily trading volume** for each ticker.
+*   **Interpretation:** Volume represents the total number of shares of that stock that were traded during that specific day. High volume can indicate higher investor interest or conviction (either buying or selling). It's often analyzed alongside price movements. For the index (`^GSPC`), the volume typically represents the combined volume of the underlying stocks or related ETF volume, depending on how Yahoo Finance reports it.
+*   **Structure:**
+    *   Rows: Indexed by Date.
+    *   Columns: Tickers (`AAPL`, `MSFT`, `AMZN`, `^GSPC`).
+    *   Values: The number of shares traded for that stock on that day (e.g., 55,100,000).
+
+**3. `market_data_daily_returns.csv`**
+
+*   **What it is:** This file contains the calculated **daily percentage returns** for each ticker.
+*   **How it was Calculated:** The script calculated this using the `pct_change()` method on the **adjusted closing prices** from `market_data_close.csv`. The formula for each day is essentially: `(Todays_Adjusted_Close - Yesterdays_Adjusted_Close) / Yesterdays_Adjusted_Close`.
+*   **Interpretation:** This represents the daily gain or loss for each stock/index as a percentage. For example, a value of `0.015` means the stock increased by 1.5% that day, while `-0.005` means it decreased by 0.5%. This is often the data you'll directly use as a target variable (what you're trying to predict) or as features (e.g., momentum based on past returns).
+*   **Structure:**
+    *   Rows: Indexed by Date (Note: The very first date from the original download range will be missing here, as returns cannot be calculated without a previous day. The `.dropna()` command removed it).
+    *   Columns: Tickers (`AAPL`, `MSFT`, `AMZN`, `^GSPC`).
+    *   Values: The daily percentage return (e.g., `0.015`, `-0.005`).

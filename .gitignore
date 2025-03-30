@@ -7,5 +7,7 @@ venv/
 # Ignore data files
 sec_filings/
 data/
+# Removing cached file
+__pycache__/
 
 
