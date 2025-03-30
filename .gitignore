@@ -4,6 +4,8 @@
 
 # Ignore virtual environments
 venv/
-
+# Ignore data files
+sec_filings/
+data/
 
 
