@@ -6,4 +6,4 @@ lxml
 nltk
 scikit-learn
 yfinance
-sec-edgar-downloader
+sec-edgar-downloaders
