@@ -1,0 +1,33 @@
+repos:
+  # --- Whitespace and formatting hooks ---
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0  # Use the latest stable version
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+
+  # --- Code Formatting with Black ---
+  - repo: https://github.com/psf/black
+    rev: 23.1.0  # Specify a stable version of Black
+    hooks:
+      - id: black
+
+  # --- Linting with Flake8 ---
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: 5.0.4  # Specify a version of Flake8
+    hooks:
+      - id: flake8
+
+  # --- Remove Notebook Outputs ---
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.6.0  # Specify a version of nbstripout
+    hooks:
+      - id: nbstripout
+
+  # --- Jupytext for Notebook/Text Synchronization ---
+  - repo: https://github.com/mwouts/jupytext
+    rev: v1.14.1  # Specify a version of Jupytext
+    hooks:
+      - id: jupytext
+        files: \.ipynb$

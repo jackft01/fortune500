@@ -1,0 +1,15 @@
+Goal: Build some application to analyse quarterly reports.
+
+Underlying: Deepseak, Lllama, anthropic
+
+Fine-Tune: 
+
+Investment thesis: 
+* Looking at market movement post quarterly report release. 
+* (Strangle) - Options
+    * Strategy where we profit off of stock volatility.
+
+Platform: Interactive brokers, OPTIONS you can't trade anywhere else. You can pay for live data from them, subscription for their API.
+
+Homework: How to fine-tune an LLM - general understanding.
+
