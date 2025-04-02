@@ -11,5 +11,7 @@ Investment thesis:
 
 Platform: Interactive brokers, OPTIONS you can't trade anywhere else. You can pay for live data from them, subscription for their API.
 
-Homework: How to fine-tune an LLM - general understanding.
+Homework: 
 
+* How to fine-tune an LLM - general understanding. 
+* Details of options contracts.
